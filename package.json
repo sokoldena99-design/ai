@@ -1,0 +1,14 @@
+{
+  "name": "local-ai-chat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Приватный чат с локальной языковой моделью Ollama",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test server.test.js"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

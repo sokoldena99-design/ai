@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#171717">
+    <meta name="description" content="Личный ИИ-чат на локальной языковой модели.">
+    <title>Диалог — личный ИИ-чат</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <a class="brand" href="/" aria-label="Главная">
+            <span class="brand-icon" aria-hidden="true">✳</span>
+            <span class="brand-name">диалог</span>
+          </a>
+          <button class="icon-button mobile-menu-button" id="close-sidebar" type="button" aria-label="Закрыть меню">×</button>
+        </div>
+
+        <button class="new-chat-button" id="new-chat" type="button">
+          <span aria-hidden="true">＋</span>
+          <span>Новый чат</span>
+          <kbd>Ctrl K</kbd>
+        </button>
+
+        <div class="history-heading">Недавние</div>
+        <nav class="chat-history" id="chat-history" aria-label="История чатов"></nav>
+
+        <div class="sidebar-bottom">
+          <div class="model-card">
+            <span class="model-indicator" id="model-indicator"></span>
+            <div class="model-copy">
+              <span class="model-name" id="model-name">Локальная модель</span>
+              <span class="model-status" id="model-status">Проверяю соединение…</span>
+            </div>
+            <span class="local-badge">ЛОКАЛЬНО</span>
+          </div>
+          <div class="privacy-note">
+            <span aria-hidden="true">◈</span>
+            <span>Разговоры хранятся на этом сервере. Никаких облачных API.</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <button class="icon-button mobile-menu-button" id="open-sidebar" type="button" aria-label="Открыть историю чатов">☰</button>
+          <div class="topbar-model">
+            <span>Личный ИИ</span>
+            <span class="topbar-separator">·</span>
+            <span class="topbar-model-name" id="topbar-model">локальная модель</span>
+          </div>
+          <span class="privacy-pill"><span class="model-indicator"></span> Без облака</span>
+        </header>
+
+        <section class="conversation" aria-label="Переписка">
+          <div class="messages" id="messages" aria-live="polite" aria-relevant="additions text"></div>
+          <div class="welcome" id="welcome">
+            <div class="welcome-mark" aria-hidden="true"><span>✳</span></div>
+            <h1>С чего начнём?</h1>
+            <p>Локальный ИИ, приватные разговоры. Спроси о чём угодно.</p>
+            <div class="suggestions">
+              <button class="suggestion" type="button" data-prompt="Объясни простыми словами, как работает искусственный интеллект">
+                <span class="suggestion-icon" aria-hidden="true">✧</span>
+                <span><strong>Объясни сложное</strong><small>Просто и по шагам</small></span>
+                <span class="suggestion-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="suggestion" type="button" data-prompt="Помоги мне составить план на сегодняшний день">
+                <span class="suggestion-icon" aria-hidden="true">◷</span>
+                <span><strong>Помоги с планом</strong><small>Соберём мысли вместе</small></span>
+                <span class="suggestion-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="suggestion" type="button" data-prompt="Напиши небольшую добрую историю, чтобы поднять настроение">
+                <span class="suggestion-icon" aria-hidden="true">♡</span>
+                <span><strong>Вдохнови меня</strong><small>Идеи, слова и истории</small></span>
+                <span class="suggestion-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="suggestion" type="button" data-prompt="Привет! Расскажи, чем ты можешь мне помочь">
+                <span class="suggestion-icon" aria-hidden="true">☻</span>
+                <span><strong>Просто поговорим</strong><small>Спроси что угодно</small></span>
+                <span class="suggestion-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="composer-wrap">
+            <p class="chat-error" id="chat-error" role="status"></p>
+            <form class="composer" id="chat-form">
+              <label class="visually-hidden" for="chat-input">Сообщение</label>
+              <textarea
+                id="chat-input"
+                name="message"
+                rows="1"
+                maxlength="10000"
+                placeholder="Спроси что-нибудь"
+                autocomplete="off"
+                required
+              ></textarea>
+              <div class="composer-toolbar">
+                <span class="composer-hint">Enter — отправить · Shift+Enter — новая строка</span>
+                <button class="send-button" id="send-button" type="submit" aria-label="Отправить сообщение" disabled>
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15.5v-11m0 0L5.5 9M10 4.5 14.5 9"/></svg>
+                </button>
+              </div>
+            </form>
+            <p class="disclaimer">Локальная модель может ошибаться. Проверяй важную информацию.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
